@@ -4,6 +4,7 @@ const produits = await reponse.json();
 
 for (let i = 0; i < produits.length; i++) {
   const article = produits[i];
+  console.log(article);
   //On pointe la section dans laquelle on va injecter les article via la class item
   const sectionItems = document.querySelector(".items");
 
@@ -20,8 +21,23 @@ for (let i = 0; i < produits.length; i++) {
   descriptionElement.classList.add("productDescription");
   descriptionElement.innerText = article.description;
 
+  //const linkElement = document.createElement("a");
+  //linkElement.innerHTML = `<a href="./product.html?${article._id}"></a>`;
+
+  //const linkElement = document.createElement("a");
+  //linkElement.href = `./product.html?${article._id}"></a>`;
+
+  //const linkElement = document.createElement("a");
+  //linkElement.setAttribute("href", `./product.html?${article._id}`);
+
+  const params = new URLSearchParams();
+  params.append("id", article._id);
+  const linkElement = document.createElement("a");
+  linkElement.href = "./product.html?" + params.toString();
+
   //On place la section article dans la section Item puis on place une image dans la section article
-  sectionItems.appendChild(sectionArticle);
+  sectionItems.appendChild(linkElement);
+  linkElement.appendChild(sectionArticle);
   sectionArticle.appendChild(imageElement);
   sectionArticle.appendChild(nomElement);
   sectionArticle.appendChild(descriptionElement);
