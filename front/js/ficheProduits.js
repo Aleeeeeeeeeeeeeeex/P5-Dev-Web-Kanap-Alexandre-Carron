@@ -12,9 +12,21 @@ async function fetchData() {
   const imageElement = document.querySelector(".item__img");
   const image = document.createElement("img");
   image.src = maficheproduit.imageUrl;
-  console.log(imageElement);
+  imageElement.appendChild(image);
   const nomProduit = document.querySelector("#title");
   nomProduit.textContent = maficheproduit.name;
-  imageElement.appendChild(image);
+  const prixElement = document.querySelector("#price");
+  prixElement.innerText = maficheproduit.price;
+  const descriptionEleent = document.querySelector("#description");
+  descriptionEleent.innerText = maficheproduit.description;
+
+  for (let i = 0; i < maficheproduit.colors.length; i++) {
+    const color = maficheproduit.colors[i];
+    const colorElement = document.querySelector("#colors");
+    const nomColor = document.createElement("option");
+    nomColor.innerText = color;
+    nomColor.value = color;
+    colorElement.appendChild(nomColor);
+  }
 }
 fetchData();
