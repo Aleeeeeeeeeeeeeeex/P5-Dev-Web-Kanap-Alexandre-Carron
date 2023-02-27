@@ -12,9 +12,9 @@ async function fetchData() {
   const imageElement = document.querySelector(".item__img");
   const image = document.createElement("img");
   image.src = maficheproduit.imageUrl;
-  imageElement.appendChild(image);
   console.log(imageElement);
   const nomProduit = document.querySelector("#title");
   nomProduit.textContent = maficheproduit.name;
+  imageElement.appendChild(image);
 }
 fetchData();
